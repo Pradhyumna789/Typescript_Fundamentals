@@ -1,4 +1,3 @@
-
 function flipCoin1(): "heads" | "tails" {
     if(Math.random() > 0.5) return "heads" 
         return "tails" 
@@ -43,4 +42,85 @@ if (output1[0] === "Error") {
 } else {
     output1 // here the output1 is the name and the email
 }
+
+// Below is the cleaned up version using type aliases
+
+type UserInfoOutcomeError = ["error", Error]
+type UserInfoOutcomeSuccess = [
+    "Success",
+    { Name: string, Email: string}
+]
+
+type UserInfoOutcome = 
+    | UserInfoOutcomeSuccess
+    | UserInfoOutcomeError
+
+function maybeGetUserInfo1(): UserInfoOutcome {
+    if(Math.random() > 0.5) {
+        return [
+            "Success",
+            { Name: "Pradhyumna", Email: "hariharshasripradhyumna@gmail.com" },
+        ]
+    } else {
+        return [
+            "error",
+            new Error("Sry this coin flipped tails :("),
+        ]
+    }
+}
+
+const result = maybeGetUserInfo1()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
